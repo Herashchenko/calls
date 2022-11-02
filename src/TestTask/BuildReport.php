@@ -32,7 +32,8 @@ class BuildReport extends CallsReport
         $calls = [];
         foreach ($items as $item){
             $startDateTime = strtotime($item->getStartDateTime());
-            for ($i = $startDateTime; $i <= $startDateTime + $item->getDuration(); $i++) {
+            $endDateTime = $startDateTime + $item->getDuration();
+            for ($i = $startDateTime; $i < $endDateTime; $i++) {
                 if (!isset($calls[$i])) {
                     $calls[$i] = 0;
                 }
