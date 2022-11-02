@@ -81,7 +81,7 @@ class BuildReport extends CallsReport
         $endDay = strtotime(date('Y-m-d 23:59:59', array_key_first($calls)));
         for ($startTime = $startDay; $startTime <= $endDay; $startTime += 60) {
             $currentCalls = array_filter($calls, function ($key) use ($startTime) {
-                return $startTime <= $key && $startTime + 60 >= $key;
+                return $startTime <= $key && $startTime + 60 > $key;
             }, ARRAY_FILTER_USE_KEY);
 
             $maxCallPerMinutesDto = new MaxCallPerMinutesDto();
